@@ -15,6 +15,6 @@ spring:
     time-zone:
       GMT+8
   application:
-    name: dm-uer-provider
+    name: sample-user-provider
   profiles:
     active: dev

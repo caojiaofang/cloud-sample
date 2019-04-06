@@ -39,7 +39,7 @@ public class DataSourceConfiguration {
 	public SqlSessionFactory sqlSessionFactory(MybatisProperties properties, DataSource dataSource,
 			ObjectProvider<Interceptor[]> interceptorsProvider) throws Exception {
 		properties.setMapperLocations(
-				new String[] { "classpath*:/com/dm/**/mapper-*.xml", "classpath*:/mapper/**/mapper-*.xml", "classpath*:/mapper/mapper-*.xml", "classpath*:mapper-*.xml" });
+				new String[] { "classpath*:/com/cloud/**/mapper-*.xml", "classpath*:/mapper/**/mapper-*.xml", "classpath*:/mapper/mapper-*.xml", "classpath*:mapper-*.xml" });
 		SqlSessionFactoryBean factory = new SqlSessionFactoryBean();
 		factory.setDataSource(dataSource);
 		factory.setVfs(SpringBootVFS.class);
@@ -58,7 +58,7 @@ public class DataSourceConfiguration {
 	public SqlSessionFactory sqlSessionFactory2(MybatisProperties properties, DataSource sysDataSource,
 			ObjectProvider<Interceptor[]> interceptorsProvider) throws Exception {
 		properties.setMapperLocations(
-				new String[] { "classpath*:/com/dm/**/mapper-*.xml", "classpath*:/mapper/**/mapper-*.xml", "classpath*:/mapper/mapper-*.xml", "classpath*:mapper-*.xml" });
+				new String[] { "classpath*:/com/cloud/**/mapper-*.xml", "classpath*:/mapper/**/mapper-*.xml", "classpath*:/mapper/mapper-*.xml", "classpath*:mapper-*.xml" });
 		SqlSessionFactoryBean factory = new SqlSessionFactoryBean();
 		factory.setDataSource(sysDataSource);
 		factory.setVfs(SpringBootVFS.class);

@@ -30,7 +30,7 @@ public class SampleSysMapperScannerRegistrar implements ImportBeanDefinitionRegi
 		scanner.setSqlSessionFactoryBeanName("sqlSessionFactory2");
 		scanner.setAnnotationClass(SysMapper.class);
 		scanner.registerFilters();
-		scanner.doScan("com.dm");
+		scanner.doScan("com.cloud");
 	}
 
 }

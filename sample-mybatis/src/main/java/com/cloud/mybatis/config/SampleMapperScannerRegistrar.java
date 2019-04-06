@@ -31,7 +31,7 @@ public class SampleMapperScannerRegistrar implements ImportBeanDefinitionRegistr
 		scanner.setSqlSessionFactoryBeanName("sqlSessionFactory");
 		scanner.setAnnotationClass(Mapper.class);
 		scanner.registerFilters();
-		scanner.doScan("com.dm");
+		scanner.doScan("com.cloud");
 	}
 
 }
