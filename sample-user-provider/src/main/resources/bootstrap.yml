@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: sample-config-server
+      profile: ${spring.profiles.active:dev}
+      name: sample-config
+
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}:${spring.application.name}
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:1111/eureka/

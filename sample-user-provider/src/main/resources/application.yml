@@ -1,0 +1,20 @@
+server:
+  port: 8090
+
+spring:
+  aop:
+    auto: true
+    proxy-target-class: true
+  servlet:
+    multipart:
+      maxFileSize: 1000MB
+      maxRequestSize: 1000MB
+  jackson:
+    dateFormat: yyyy-MM-dd HH:mm:ss
+    defaultPropertyInclusion: NON_NULL
+    time-zone:
+      GMT+8
+  application:
+    name: dm-uer-provider
+  profiles:
+    active: dev

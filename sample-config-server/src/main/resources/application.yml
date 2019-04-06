@@ -1,0 +1,26 @@
+server:
+  port: 8888
+
+spring:
+  cloud:
+    config:
+      server:
+        jdbc:
+          sql: SELECT akey , avalue FROM properties where application=? and aprofile=? and lable=?
+  application:
+    name: sample-config-server
+  profiles:
+    active: jdbc,dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/springcloud?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+    
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}:${spring.application.name}
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:1111/eureka/
