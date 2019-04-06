@@ -47,7 +47,7 @@ public class ConfigServerController {
 	@RequestMapping({ "/findcfg" })
 	public String findcfg(String application, String profile, String label) {
 		if (StringUtils.isEmpty(application)) {
-			application = "sample-config";
+			application = "application";
 		}
 		if (StringUtils.isEmpty(profile)) {
 			profile = "dev";
