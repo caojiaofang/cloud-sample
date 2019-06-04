@@ -17,15 +17,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 
 @Component
-public class UppJsonUtil {
+public class SamJsonUtil {
 
-	private static Logger logger = LoggerFactory.getLogger(UppJsonUtil.class); // 日志记录
+	private static Logger logger = LoggerFactory.getLogger(SamJsonUtil.class); // 日志记录
 	
 	private static ObjectMapper objectMapper;
 
 	@Resource
 	public void setObjectMapper(ObjectMapper objectMapper) {
-		UppJsonUtil.objectMapper = objectMapper;
+		SamJsonUtil.objectMapper = objectMapper;
 		objectMapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
 	}
 

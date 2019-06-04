@@ -15,7 +15,7 @@ import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.cloud.utils.json.UppJsonUtil;
+import com.cloud.utils.json.SamJsonUtil;
 
 public class HttpRequestUtils {
 
@@ -156,7 +156,7 @@ public class HttpRequestUtils {
 
 				/** 把json字符串转换成json对象 **/
 				
-				jsonResult = UppJsonUtil.toJson(strResult);
+				jsonResult = SamJsonUtil.toJson(strResult);
 
 				url = URLDecoder.decode(url, "UTF-8");
 
