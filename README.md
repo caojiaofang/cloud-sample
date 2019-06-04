@@ -7,3 +7,5 @@ cloud-sample子工程介绍:
 （3）sample-config-client -- 服务配置中心client客户端
 （4）sample-mybatis -- 数据库连接配置服务
 （5）sample-utils -- 通用工具类
+--------------------------------
+spring cloud服务组件
