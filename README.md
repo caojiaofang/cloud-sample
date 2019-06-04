@@ -16,4 +16,3 @@ cloud-sample子工程介绍:
 5、sample-utils -- 通用工具类
 --------------------------------
 spring cloud服务组件
-提交测试 
