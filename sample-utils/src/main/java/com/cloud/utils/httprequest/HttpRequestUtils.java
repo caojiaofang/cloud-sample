@@ -35,10 +35,31 @@ public class HttpRequestUtils {
 
 	public static String httpPost(String url, String jsonParam) {
 
-		return httpPost(url, jsonParam, false);
+		return httpPost(url, jsonParam, "application/xml",false);
 
 	}
 
+	
+	/**
+	 * 
+	 * httpPost
+	 * 
+	 * @param url       路径
+	 * 
+	 * @param jsonParam 参数
+	 * 
+	 * @param contentType 类型
+	 * 
+	 * @return
+	 * 
+	 */
+
+	public static String httpPost(String url, String jsonParam, String contentType) {
+
+		return httpPost(url, jsonParam, contentType, false);
+
+	}
+	
 	/**
 	 * 
 	 * post请求
@@ -53,7 +74,7 @@ public class HttpRequestUtils {
 	 * 
 	 */
 
-	public static String httpPost(String url, String jsonParam, boolean noNeedResponse) {
+	public static String httpPost(String url, String jsonParam, String contentType,boolean noNeedResponse) {
 
 		// post请求返回结果
 		String reStr = "";
@@ -71,7 +92,7 @@ public class HttpRequestUtils {
 
 				entity.setContentEncoding("utf-8");
 
-				entity.setContentType("application/xml");
+				entity.setContentType(contentType);
 
 				method.setEntity(entity);
 

@@ -26,7 +26,7 @@
         <module>sample-db</module>
         <module>sample-mybatis</module>
         <module>sample-utils</module>
-        <module>sample-user-provider</module>
+        <module>sample-controller</module>
     </modules>
 
     <properties>

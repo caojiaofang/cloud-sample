@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.db.dao.ServerManagerDao">
+	<resultMap id="baseResultMap" type="com.cloud.db.pojo.ServerManagerPOJO">
+		<id column="username" property="username"/>
+		<result column="userpwd" property="userpwd" jdbcType="VARCHAR"/>
+		<result column="ip" property="ip" jdbcType="VARCHAR"/>
+		<result column="port" property="port" jdbcType="VARCHAR"/>
+		<result column="filepath" property="filepath" jdbcType="VARCHAR"/>
+		<result column="servicename" property="servicename" jdbcType="VARCHAR"/>
+		<result column="execustatus" property="execustatus" jdbcType="VARCHAR"/>
+		<result column="rmk" property="rmk" jdbcType="VARCHAR"/>
+	</resultMap>
+	<sql id="baseColumnList">
+		username,userpwd,ip,port,filepath,servicename,execustatus,rmk
+	</sql>
+	<insert id="insertRecord" parameterType="com.cloud.db.pojo.ServerManagerPOJO">
+		insert into server_manager(username,
+			userpwd,
+			ip,
+			port,
+			filepath,
+			servicename,
+			execustatus,
+			rmk)
+		values (#{username,jdbcType=VARCHAR},
+			#{userpwd,jdbcType=VARCHAR},
+			#{ip,jdbcType=VARCHAR},
+			#{port,jdbcType=VARCHAR},
+			#{filepath,jdbcType=VARCHAR},
+			#{servicename,jdbcType=VARCHAR},
+			#{execustatus,jdbcType=VARCHAR},
+			#{rmk,jdbcType=VARCHAR})
+ </insert>
+	<delete id="deleteById" >
+		delete from server_manager where ip= #{ip,jdbcType=VARCHAR} and port= #{port,jdbcType=VARCHAR}
+
+	</delete>
+	<update id="updateByIdSelective" parameterType="com.cloud.db.pojo.ServerManagerPOJO">
+		update server_manager
+		<set>
+			<if test="userpwd != null" >
+				userpwd=#{userpwd,jdbcType=VARCHAR},
+			</if>
+			<if test="ip != null" >
+				ip=#{ip,jdbcType=VARCHAR},
+			</if>
+			<if test="port != null" >
+				port=#{port,jdbcType=VARCHAR},
+			</if>
+			<if test="filepath != null" >
+				filepath=#{filepath,jdbcType=VARCHAR},
+			</if>
+			<if test="servicename != null" >
+				servicename=#{servicename,jdbcType=VARCHAR},
+			</if>
+			<if test="execustatus != null" >
+				execustatus=#{execustatus,jdbcType=VARCHAR},
+			</if>
+			<if test="rmk != null" >
+				rmk=#{rmk,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ip= #{ip,jdbcType=VARCHAR} and port= #{port,jdbcType=VARCHAR}
+
+	</update>
+	<update id="updateById" parameterType="com.cloud.db.pojo.ServerManagerPOJO">
+		update server_manager set
+			userpwd=#{userpwd,jdbcType=VARCHAR},
+			ip=#{ip,jdbcType=VARCHAR},
+			port=#{port,jdbcType=VARCHAR},
+			filepath=#{filepath,jdbcType=VARCHAR},
+			servicename=#{servicename,jdbcType=VARCHAR},
+			execustatus=#{execustatus,jdbcType=VARCHAR},
+			rmk=#{rmk,jdbcType=VARCHAR}
+		where ip= #{ip,jdbcType=VARCHAR} and port= #{port,jdbcType=VARCHAR}
+	</update>
+	<select id="selectById" resultMap="baseResultMap">
+		select
+		<include refid="baseColumnList"/>
+		from server_manager
+		where ip= #{ip,jdbcType=VARCHAR} and port= #{port,jdbcType=VARCHAR}
+
+	</select>
+	<select id="selectAll" parameterType="com.cloud.db.pojo.ServerManagerPOJO" resultMap="baseResultMap">
+		select <include refid="baseColumnList"/> from server_manager where 1=1
+		<if test="username != null and username != ''" >
+			and username=#{username,jdbcType=VARCHAR}
+		</if>
+		<if test="userpwd != null and userpwd != ''" >
+			and userpwd=#{userpwd,jdbcType=VARCHAR}
+		</if>
+		<if test="ip != null and ip != ''" >
+			and ip=#{ip,jdbcType=VARCHAR}
+		</if>
+		<if test="port != null and port != ''" >
+			and port=#{port,jdbcType=VARCHAR}
+		</if>
+		<if test="filepath != null and filepath != ''" >
+			and filepath=#{filepath,jdbcType=VARCHAR}
+		</if>
+		<if test="servicename != null and servicename != ''" >
+			and servicename=#{servicename,jdbcType=VARCHAR}
+		</if>
+		<if test="execustatus != null and execustatus != ''" >
+			and execustatus=#{execustatus,jdbcType=VARCHAR}
+		</if>
+		<if test="rmk != null and rmk != ''" >
+			and rmk=#{rmk,jdbcType=VARCHAR}
+		</if>
+	</select>
+	<select id="selectByMap" parameterType="Map" resultMap="baseResultMap">
+		select <include refid="baseColumnList"/> from server_manager where 1=1
+		<if test="username != null and username != ''" >
+			and username=#{username,jdbcType=VARCHAR}
+		</if>
+		<if test="userpwd != null and userpwd != ''" >
+			and userpwd=#{userpwd,jdbcType=VARCHAR}
+		</if>
+		<if test="ip != null and ip != ''" >
+			and ip=#{ip,jdbcType=VARCHAR}
+		</if>
+		<if test="port != null and port != ''" >
+			and port=#{port,jdbcType=VARCHAR}
+		</if>
+		<if test="filepath != null and filepath != ''" >
+			and filepath=#{filepath,jdbcType=VARCHAR}
+		</if>
+		<if test="servicename != null and servicename != ''" >
+			and servicename=#{servicename,jdbcType=VARCHAR}
+		</if>
+		<if test="execustatus != null and execustatus != ''" >
+			and execustatus=#{execustatus,jdbcType=VARCHAR}
+		</if>
+		<if test="rmk != null and rmk != ''" >
+			and rmk=#{rmk,jdbcType=VARCHAR}
+		</if>
+	</select>
+</mapper>

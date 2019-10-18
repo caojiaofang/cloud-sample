@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.db.dao.PropertiesDao">
+	<resultMap id="baseResultMap" type="com.cloud.db.pojo.PropertiesPOJO">
+		<id column="id" property="id"/>
+		<result column="akey" property="akey" jdbcType="VARCHAR"/>
+		<result column="avalue" property="avalue" jdbcType="VARCHAR"/>
+		<result column="application" property="application" jdbcType="VARCHAR"/>
+		<result column="aprofile" property="aprofile" jdbcType="VARCHAR"/>
+		<result column="label" property="label" jdbcType="VARCHAR"/>
+	</resultMap>
+	<sql id="baseColumnList">
+		id,akey,avalue,application,aprofile,lable
+	</sql>
+	<insert id="insertRecord" parameterType="com.cloud.db.pojo.PropertiesPOJO">
+		insert into properties(id,
+			akey,
+			avalue,
+			application,
+			aprofile,
+			label)
+		values (#{id},
+			#{akey,jdbcType=VARCHAR},
+			#{avalue,jdbcType=VARCHAR},
+			#{application,jdbcType=VARCHAR},
+			#{aprofile,jdbcType=VARCHAR},
+			#{label,jdbcType=VARCHAR})
+ </insert>
+	<select id="selectById" resultMap="baseResultMap">
+		select
+		<include refid="baseColumnList"/>
+		from properties
+		where id= #{id}
+	</select>
+</mapper>

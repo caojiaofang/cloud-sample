@@ -64,6 +64,10 @@ public abstract class StringUtils {
 		return !isNEmpty(str);
 	}
 
+	public static boolean isEmpty(Object str) {
+		return (str == null || "".equals(str));
+	}
+	
 	public static String conversionNullToBlank(String str) {
 		if (isNotNull(str)) {
 			return str;
