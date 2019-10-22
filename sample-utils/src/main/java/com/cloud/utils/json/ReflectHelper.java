@@ -1,4 +1,4 @@
-package com.cloud.utils.httprequest;
+package com.cloud.utils.json;
 
 import java.beans.BeanInfo;
 import java.beans.Introspector;
