@@ -17,12 +17,13 @@ package com.cloud.db.pojo;
  */
 public class PropertiesPOJO {
 
-	private int id;	//
-	private String akey;	//
-	private String avalue;	//
-	private String application;	//
-	private String aprofile;	//
-	private String label;	//
+	private int id;	//id
+	private String akey;	//key值
+	private String avalue;	//value值
+	private String application;	//应用名称
+	private String aprofile;	//应用模块
+	private String label;	//应用环境
+	
 	public int getId() {
 		return id;
 	}
