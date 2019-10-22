@@ -47,5 +47,28 @@
 		</dependency>
 		
     </dependencies>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <classesDirectory>target/classes/</classesDirectory>
+                    <includes>
+                        <include>*/**</include>
+                    </includes>
+                    <excludes>
+                        <exclude>/*.yml</exclude>
+                        <exclude>/*.xml</exclude>
+                    </excludes>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                    </archive>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
 
 </project>
