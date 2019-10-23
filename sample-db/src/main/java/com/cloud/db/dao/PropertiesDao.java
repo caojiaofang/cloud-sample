@@ -8,8 +8,8 @@
  */
 package com.cloud.db.dao;
 
+import com.cloud.config.SysMapper;
 import com.cloud.db.pojo.PropertiesPOJO;
-import com.cloud.mybatis.config.SysMapper;
 
 /**
  * @Title:  PropertiesDao.java

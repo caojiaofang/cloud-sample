@@ -1,4 +1,4 @@
-package com.cloud.mybatis.config;
+package com.cloud.config;
 
 import javax.sql.DataSource;
 
@@ -20,12 +20,10 @@ import com.cloud.mybatis.helper.BatisHelper;
 import com.zaxxer.hikari.HikariDataSource;
 
 /**
- * @Description: 数据源配置
- * @author  lizhi 
- * @date  2019年4月6日 下午2:10:32
+ * 数据源配置
  */
 @Configuration
-@Import({ SampleMapperScannerRegistrar.class, SampleSysMapperScannerRegistrar.class })
+@Import({ MapperScannerRegistrar.class, SysMapperScannerRegistrar.class })
 public class DataSourceConfiguration {
 
 	@Bean("sysDataSource")

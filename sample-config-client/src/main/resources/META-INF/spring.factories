@@ -1,1 +1,1 @@
-org.springframework.cloud.bootstrap.BootstrapConfiguration = com.cloud.SampleConfig
+org.springframework.cloud.bootstrap.BootstrapConfiguration = com.cloud.config.ClientPropertyConfiguration

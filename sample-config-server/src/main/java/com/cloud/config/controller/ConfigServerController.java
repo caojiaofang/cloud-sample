@@ -9,6 +9,7 @@
 package com.cloud.config.controller;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -40,30 +41,30 @@ public class ConfigServerController {
 
 	@Autowired
 	private EnvironmentRepository repository;
-	
 	@Autowired
 	private ObjectMapper objectMapper;
 
 	@RequestMapping({ "/findcfg" })
-	public String findcfg(String application, String profile, String label) {
-		if (StringUtils.isEmpty(application)) {
-			application = "application";
+	public String findcfg(String name, String profiles, String key) {
+		System.err.println("我进来了");
+		if (StringUtils.isEmpty(name)) {
+			name = "application";
 		}
-		if (StringUtils.isEmpty(profile)) {
-			profile = "dev";
+		if (StringUtils.isEmpty(profiles)) {
+			profiles = "dev";
 		}
-		Environment environment = repository.findOne(application, profile, null);
-		
+		Environment environment = repository.findOne(name, profiles, null);
+		log.info("获取到的信息是environment:{}",environment);
 		Map<Object, Object> result = new HashMap<>();
-		if (StringUtils.isEmpty(label)) {
+		if (StringUtils.isEmpty(key)) {
 			for (PropertySource ps : environment.getPropertySources()) {
 				result.putAll(ps.getSource());
 			}
 		} else {
 			for (PropertySource ps : environment.getPropertySources()) {
-				Object o = ps.getSource().get(label);
+				Object o = ps.getSource().get(key);
 				if (o != null) {
-					result.put(label, o);
+					result.put(key, o);
 					break;
 				}
 			}

@@ -7,9 +7,11 @@ import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 
+import com.cloud.mybatis.dialect.DB2Dialect;
 import com.cloud.mybatis.dialect.Dialect;
 import com.cloud.mybatis.dialect.MySQLDialect;
 import com.cloud.mybatis.dialect.OracleDialect;
+import com.cloud.mybatis.dialect.SQLServerDialect;
 import com.cloud.mybatis.interceptor.PageInterceptor;
 
 /**
@@ -93,7 +95,7 @@ public abstract class BatisHelper {
 			throw new IllegalArgumentException("分页查询语句不能为null或空！");
 		}
 
-		String query = sql;
+		String query = BatisHelper.removeOrderBy(sql);
 		// count函数统计
 		StringBuffer buf = new StringBuffer();
 		if (query.toLowerCase().indexOf("from") == query.toLowerCase().lastIndexOf("from")) {// sql只有一个from
@@ -137,10 +139,14 @@ public abstract class BatisHelper {
 		Dialect dialect = null;
 		if (driverClassName == null) {
 			dialect = null;
-		} else if (driverClassName.contains("mysql.")) {
+		} else if (driverClassName.contains("mysql")) {
 			dialect = new MySQLDialect();
-		} else if (driverClassName.contains("oracle.")) {
+		} else if (driverClassName.contains("oracle")) {
 			dialect = new OracleDialect();
+		} else if (driverClassName.contains("db2")) {
+			dialect = new DB2Dialect();
+		} else if (driverClassName.contains("sqlserver")) {
+			dialect = new SQLServerDialect();
 		} 
 		PageInterceptor interceptor = new PageInterceptor();
 		interceptor.setDialect(dialect);

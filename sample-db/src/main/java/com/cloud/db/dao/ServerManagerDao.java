@@ -10,8 +10,8 @@ package com.cloud.db.dao;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.cloud.config.SysMapper;
 import com.cloud.db.pojo.ServerManagerPOJO;
-import com.cloud.mybatis.config.SysMapper;
 
 /**
  * @Title:  ServerManagerDao.java
