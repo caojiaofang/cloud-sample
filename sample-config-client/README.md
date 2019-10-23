@@ -1,1 +1,1 @@
-config配置中心客户端
+config配置中心客户端，用来拉取config-server中的配置信息
