@@ -1,4 +1,4 @@
-package com.cloud.config;
+package com.cloud.mybatis.config;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

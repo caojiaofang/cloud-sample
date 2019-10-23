@@ -15,7 +15,7 @@
 		username,userpwd,ip,port,filepath,servicename,execustatus,rmk
 	</sql>
 	<insert id="insertRecord" parameterType="com.cloud.db.pojo.ServerManagerPOJO">
-		insert into server_manager(username,
+		insert into sample_servermanager(username,
 			userpwd,
 			ip,
 			port,
@@ -33,11 +33,11 @@
 			#{rmk,jdbcType=VARCHAR})
  </insert>
 	<delete id="deleteById" >
-		delete from server_manager where ip= #{ip,jdbcType=VARCHAR} and port= #{port,jdbcType=VARCHAR}
+		delete from sample_servermanager where ip= #{ip,jdbcType=VARCHAR} and port= #{port,jdbcType=VARCHAR}
 
 	</delete>
 	<update id="updateByIdSelective" parameterType="com.cloud.db.pojo.ServerManagerPOJO">
-		update server_manager
+		update sample_servermanager
 		<set>
 			<if test="userpwd != null" >
 				userpwd=#{userpwd,jdbcType=VARCHAR},
@@ -65,7 +65,7 @@
 
 	</update>
 	<update id="updateById" parameterType="com.cloud.db.pojo.ServerManagerPOJO">
-		update server_manager set
+		update sample_servermanager set
 			userpwd=#{userpwd,jdbcType=VARCHAR},
 			ip=#{ip,jdbcType=VARCHAR},
 			port=#{port,jdbcType=VARCHAR},
@@ -78,12 +78,12 @@
 	<select id="selectById" resultMap="baseResultMap">
 		select
 		<include refid="baseColumnList"/>
-		from server_manager
+		from sample_servermanager
 		where ip= #{ip,jdbcType=VARCHAR} and port= #{port,jdbcType=VARCHAR}
 
 	</select>
 	<select id="selectAll" parameterType="com.cloud.db.pojo.ServerManagerPOJO" resultMap="baseResultMap">
-		select <include refid="baseColumnList"/> from server_manager where 1=1
+		select <include refid="baseColumnList"/> from sample_servermanager where 1=1
 		<if test="username != null and username != ''" >
 			and username=#{username,jdbcType=VARCHAR}
 		</if>
@@ -110,7 +110,7 @@
 		</if>
 	</select>
 	<select id="selectByMap" parameterType="Map" resultMap="baseResultMap">
-		select <include refid="baseColumnList"/> from server_manager where 1=1
+		select <include refid="baseColumnList"/> from sample_servermanager where 1=1
 		<if test="username != null and username != ''" >
 			and username=#{username,jdbcType=VARCHAR}
 		</if>

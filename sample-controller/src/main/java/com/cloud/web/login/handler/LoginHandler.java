@@ -49,26 +49,7 @@ public class LoginHandler {
 		if (userPOJO == null) {
 			return "userAcctError";
 		}
-		/*
-		 * if (userPOJO.getUserPwd().equals(password)) { WebContextPOJO webContextPOJO =
-		 * new WebContextPOJO(); webContextPOJO.setUserAcct(userPOJO.getUserAcct());
-		 * webContextPOJO.setUserNm(userPOJO.getUserNm());
-		 * webContextPOJO.setLoginTime(DateUtils.format(new Date(), YMDHMS_PATTERN));
-		 * webContextPOJO.setUserPOJO(userPOJO); UppContextUtil.key(vo, session);
-		 * UppContextUtil.setContext(vo, session); //设置sessionId String ip =
-		 * (((ServletRequestAttributes)
-		 * RequestContextHolder.getRequestAttributes()).getRequest()).getRemoteAddr();
-		 * if(StringUtil.isEmptyOrNull(uppUserDO.getSessionId())) {
-		 * uppUserDO.setSessionId(ip); }else if(!ip.equals(uppUserDO.getSessionId()))
-		 * {//当前登录ip与上次登录ip 不一致 return "ipError"; } uppUserDO.setPwdErrCnt(0);
-		 * uppUserDao.updateByIdSelective(uppUserDO); log.info("用户{}登录成功。",
-		 * uppUserDO.getUserAcct());
-		 * 
-		 * return "success"; } else { int cnt = 0; if(uppUserDO.getPwdErrCnt() != null)
-		 * { cnt = uppUserDO.getPwdErrCnt(); } cnt++; uppUserDO.setPwdErrCnt(cnt);
-		 * if(cnt > 4) { uppUserDO.setState(UserStateEnum.LOCK.getEnValue()); }
-		 * uppUserDao.updateByIdSelective(uppUserDO); return "userPwdError|" + cnt; }
-		 */
+		
 		return password;
 	}
 	

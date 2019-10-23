@@ -8,8 +8,11 @@
  */
 package com.cloud.db.dao;
 
-import com.cloud.config.SysMapper;
+import java.util.List;
+
 import com.cloud.db.pojo.PropertiesPOJO;
+import com.cloud.mybatis.config.SysMapper;
+import com.cloud.mybatis.interceptor.PageBounds;
 
 /**
  * @Title:  PropertiesDao.java
@@ -23,5 +26,7 @@ import com.cloud.db.pojo.PropertiesPOJO;
 public interface PropertiesDao {
 	
 	public PropertiesPOJO selectById(Long id);// 通过Id(主键)查询一条记录
+	
+	public List<PropertiesPOJO> selectAll(PropertiesPOJO record,PageBounds pageBounds);//根据条件查询
 	
 }

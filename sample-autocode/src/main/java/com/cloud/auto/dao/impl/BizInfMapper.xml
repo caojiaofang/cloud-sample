@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.BizInfIDao">
+	<resultMap id="BaseResultMap" type="com.bean.BizInfBean">
+		<id column="sgnno" property="sgnno"/>
+		<result column="instgacct" property="instgacct"/>
+		<result column="instgid" property="instgid"/>
+		<result column="idno" property="idno"/>
+		<result column="idtp" property="idtp"/>
+		<result column="acctissrid" property="acctissrid"/>
+		<result column="acctid" property="acctid"/>
+		<result column="accnm" property="accnm"/>
+		<result column="accttp" property="accttp"/>
+		<result column="acctlvl" property="acctlvl"/>
+		<result column="mobno" property="mobno"/>
+		<result column="sgnstate" property="sgnstate"/>
+		<result column="wsttm" property="wsttm"/>
+		<result column="uptm" property="uptm"/>
+	</resultMap>
+	<sql id="Base_Column_List">
+		sgnno,instgacct,instgid,idno,idtp,acctissrid,acctid,accnm,accttp,acctlvl,mobno,sgnstate,wsttm,uptm
+	</sql>
+	<insert id="insertRecord" parameterType="com.bean.BizInfBean">
+		insert into TEPCC_BIZINF(sgnno,
+			instgacct,
+			instgid,
+			idno,
+			idtp,
+			acctissrid,
+			acctid,
+			accnm,
+			accttp,
+			acctlvl,
+			mobno,
+			sgnstate,
+			wsttm,
+			uptm)
+		values (#{sgnno},
+			#{instgacct},
+			#{instgid},
+			#{idno},
+			#{idtp},
+			#{acctissrid},
+			#{acctid},
+			#{accnm},
+			#{accttp},
+			#{acctlvl},
+			#{mobno},
+			#{sgnstate},
+			#{wsttm},
+			#{uptm})
+ </insert>
+	<insert id="insertSelective" parameterType="com.bean.BizInfBean">
+		insert into TEPCC_BIZINF
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="sgnno != null" >
+				sgnno,
+			</if>
+			<if test="instgacct != null" >
+				instgacct,
+			</if>
+			<if test="instgid != null" >
+				instgid,
+			</if>
+			<if test="idno != null" >
+				idno,
+			</if>
+			<if test="idtp != null" >
+				idtp,
+			</if>
+			<if test="acctissrid != null" >
+				acctissrid,
+			</if>
+			<if test="acctid != null" >
+				acctid,
+			</if>
+			<if test="accnm != null" >
+				accnm,
+			</if>
+			<if test="accttp != null" >
+				accttp,
+			</if>
+			<if test="acctlvl != null" >
+				acctlvl,
+			</if>
+			<if test="mobno != null" >
+				mobno,
+			</if>
+			<if test="sgnstate != null" >
+				sgnstate,
+			</if>
+			<if test="wsttm != null" >
+				wsttm,
+			</if>
+			<if test="uptm != null" >
+				uptm,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="sgnno != null" >
+				#{sgnno},
+			</if>
+			<if test="instgacct != null" >
+				#{instgacct},
+			</if>
+			<if test="instgid != null" >
+				#{instgid},
+			</if>
+			<if test="idno != null" >
+				#{idno},
+			</if>
+			<if test="idtp != null" >
+				#{idtp},
+			</if>
+			<if test="acctissrid != null" >
+				#{acctissrid},
+			</if>
+			<if test="acctid != null" >
+				#{acctid},
+			</if>
+			<if test="accnm != null" >
+				#{accnm},
+			</if>
+			<if test="accttp != null" >
+				#{accttp},
+			</if>
+			<if test="acctlvl != null" >
+				#{acctlvl},
+			</if>
+			<if test="mobno != null" >
+				#{mobno},
+			</if>
+			<if test="sgnstate != null" >
+				#{sgnstate},
+			</if>
+			<if test="wsttm != null" >
+				#{wsttm},
+			</if>
+			<if test="uptm != null" >
+				#{uptm},
+			</if>
+		</trim>
+	</insert>
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from TEPCC_BIZINF where sgnno= #{sgnno}
+	</delete>
+	<update id="updateByIdSelective" parameterType="com.bean.BizInfBean">
+		update TEPCC_BIZINF
+		<set>
+			<if test="instgacct != null" >
+				instgacct=#{instgacct},
+			</if>
+			<if test="instgid != null" >
+				instgid=#{instgid},
+			</if>
+			<if test="idno != null" >
+				idno=#{idno},
+			</if>
+			<if test="idtp != null" >
+				idtp=#{idtp},
+			</if>
+			<if test="acctissrid != null" >
+				acctissrid=#{acctissrid},
+			</if>
+			<if test="acctid != null" >
+				acctid=#{acctid},
+			</if>
+			<if test="accnm != null" >
+				accnm=#{accnm},
+			</if>
+			<if test="accttp != null" >
+				accttp=#{accttp},
+			</if>
+			<if test="acctlvl != null" >
+				acctlvl=#{acctlvl},
+			</if>
+			<if test="mobno != null" >
+				mobno=#{mobno},
+			</if>
+			<if test="sgnstate != null" >
+				sgnstate=#{sgnstate},
+			</if>
+			<if test="wsttm != null" >
+				wsttm=#{wsttm},
+			</if>
+			<if test="uptm != null" >
+				uptm=#{uptm},
+			</if>
+		</set>
+		where sgnno= #{sgnno}
+	</update>
+	<update id="updateById" parameterType="com.bean.BizInfBean">
+		update TEPCC_BIZINF set
+			instgacct=#{instgacct},
+			instgid=#{instgid},
+			idno=#{idno},
+			idtp=#{idtp},
+			acctissrid=#{acctissrid},
+			acctid=#{acctid},
+			accnm=#{accnm},
+			accttp=#{accttp},
+			acctlvl=#{acctlvl},
+			mobno=#{mobno},
+			sgnstate=#{sgnstate},
+			wsttm=#{wsttm},
+			uptm=#{uptm}
+		where sgnno= #{sgnno}
+	</update>
+	<select id="countRecord" resultType="java.lang.Integer">
+		select count(*) from TEPCC_BIZINF
+	</select>
+	<select id="countSelective" parameterType="com.bean.BizInfBean" resultType="java.lang.Integer">
+		select count(*) from TEPCC_BIZINF where 1=1
+		<if test="sgnno != null" >
+			and sgnno=#{sgnno}
+		</if>
+		<if test="instgacct != null" >
+			and instgacct=#{instgacct}
+		</if>
+		<if test="instgid != null" >
+			and instgid=#{instgid}
+		</if>
+		<if test="idno != null" >
+			and idno=#{idno}
+		</if>
+		<if test="idtp != null" >
+			and idtp=#{idtp}
+		</if>
+		<if test="acctissrid != null" >
+			and acctissrid=#{acctissrid}
+		</if>
+		<if test="acctid != null" >
+			and acctid=#{acctid}
+		</if>
+		<if test="accnm != null" >
+			and accnm=#{accnm}
+		</if>
+		<if test="accttp != null" >
+			and accttp=#{accttp}
+		</if>
+		<if test="acctlvl != null" >
+			and acctlvl=#{acctlvl}
+		</if>
+		<if test="mobno != null" >
+			and mobno=#{mobno}
+		</if>
+		<if test="sgnstate != null" >
+			and sgnstate=#{sgnstate}
+		</if>
+		<if test="wsttm != null" >
+			and wsttm=#{wsttm}
+		</if>
+		<if test="uptm != null" >
+			and uptm=#{uptm}
+		</if>
+	</select>
+	<select id="maxId" resultType="java.lang.Integer">
+		select max(sgnno) from TEPCC_BIZINF
+	</select>
+	<select id="selectById" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List"/>
+		from TEPCC_BIZINF
+		where sgnno= #{sgnno}
+	</select>
+	<select id="selectAll" resultMap="BaseResultMap">
+		select * from TEPCC_BIZINF
+	</select>
+</mapper>

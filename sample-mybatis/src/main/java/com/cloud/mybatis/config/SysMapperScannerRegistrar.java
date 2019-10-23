@@ -1,6 +1,5 @@
-package com.cloud.config;
+package com.cloud.mybatis.config;
 
-import org.apache.ibatis.annotations.Mapper;
 import org.mybatis.spring.mapper.ClassPathMapperScanner;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.ResourceLoaderAware;
@@ -10,9 +9,9 @@ import org.springframework.core.type.AnnotationMetadata;
 
 /**
  * 
- * package"com.ylink"，Mapper注解，使用sqlSessionFactory
+ * package"com.ylink"，SysMapper注解，使用sqlSessionFactory2
  */
-public class MapperScannerRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoaderAware {
+public class SysMapperScannerRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoaderAware {
 
 	private ResourceLoader resourceLoader;
 
@@ -27,8 +26,8 @@ public class MapperScannerRegistrar implements ImportBeanDefinitionRegistrar, Re
 		if (this.resourceLoader != null) {
 			scanner.setResourceLoader(this.resourceLoader);
 		}
-		scanner.setSqlSessionFactoryBeanName("sqlSessionFactory");
-		scanner.setAnnotationClass(Mapper.class);
+		scanner.setSqlSessionFactoryBeanName("sqlSessionFactory2");
+		scanner.setAnnotationClass(SysMapper.class);
 		scanner.registerFilters();
 		scanner.doScan("com.cloud");
 	}

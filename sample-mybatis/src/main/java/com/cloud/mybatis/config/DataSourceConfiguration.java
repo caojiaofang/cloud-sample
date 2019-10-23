@@ -1,4 +1,4 @@
-package com.cloud.config;
+package com.cloud.mybatis.config;
 
 import javax.sql.DataSource;
 
