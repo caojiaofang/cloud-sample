@@ -13,7 +13,7 @@ import java.util.Map;
 
 import com.cloud.db.pojo.MenuLevelPOJO;
 import com.cloud.db.pojo.OrganPOJO;
-import com.cloud.db.pojo.UserPOJO;
+import com.cloud.db.pojo.SampleUserPOJO;
 
 /**
  * @Title:  WebContextPOJO.java
@@ -31,7 +31,7 @@ public class WebContextPOJO {
 
 	private String loginTime; // 登录时间
 
-	private UserPOJO userPOJO;
+	private SampleUserPOJO sampleUserPOJO;
 
 	private List<OrganPOJO> organPOJOs;
 
@@ -65,12 +65,12 @@ public class WebContextPOJO {
 		this.loginTime = loginTime;
 	}
 
-	public UserPOJO getUserPOJO() {
-		return userPOJO;
+	public SampleUserPOJO getSampleUserPOJO() {
+		return sampleUserPOJO;
 	}
 
-	public void setUserPOJO(UserPOJO userPOJO) {
-		this.userPOJO = userPOJO;
+	public void setSampleUserPOJO(SampleUserPOJO sampleUserPOJO) {
+		this.sampleUserPOJO = sampleUserPOJO;
 	}
 
 	public List<OrganPOJO> getOrganPOJOs() {
@@ -108,7 +108,8 @@ public class WebContextPOJO {
 	@Override
 	public String toString() {
 		return "WebContextPOJO [userAcct=" + userAcct + ", userNm=" + userNm + ", loginTime=" + loginTime
-				+ ", userPOJO=" + userPOJO + ", organPOJOs=" + organPOJOs + ", menus=" + menus + ", key=" + key
-				+ ", payChlMenus=" + payChlMenus + "]";
+				+ ", sampleUserPOJO=" + sampleUserPOJO + ", organPOJOs=" + organPOJOs + ", menus=" + menus + ", key="
+				+ key + ", payChlMenus=" + payChlMenus + "]";
 	}
+
 }

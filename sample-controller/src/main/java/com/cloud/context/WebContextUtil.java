@@ -18,6 +18,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.cloud.utils.date.DateUtils;
+import com.cloud.utils.tools.Base64Util;
 
 /**
  * @Title:  WebContextUtil.java
@@ -29,21 +30,18 @@ import com.cloud.utils.date.DateUtils;
  */
 public class WebContextUtil {
 
-	private static final String UPPCONTEXT = "UppContext";
+	private static final String UPPCONTEXT = "WebContext";
 	
 	public static final String YMDHMS_PATTERN = "yyyy-MM-dd HH:mm:ss";
 
-	public static void setLoginSession(WebContextPOJO webContextPOJO, HttpSession session) {
-	    if ((webContextPOJO != null)) {
-	    	webContextPOJO.setLoginTime(DateUtils.format(new Date(), YMDHMS_PATTERN));
-	    }
-
-	    setUserContext(webContextPOJO, session);
-	 }
-	
 	public static void setUserContext(WebContextPOJO webContextPOJO, HttpSession session) {
 		session.setAttribute(UPPCONTEXT, webContextPOJO);
 	 }
+	
+	public static void key(WebContextPOJO webContextPOJO, HttpSession session) {
+		String string = DateUtils.format(new Date(), YMDHMS_PATTERN) + webContextPOJO.getUserAcct() + session.getId();
+		webContextPOJO.setKey(Base64Util.encodeByte(string.getBytes()));
+	}
 	
 	public static void outerLoginSession() {
 		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();

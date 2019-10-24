@@ -1,35 +1,256 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cloud.db.dao.PropertiesDao">
-	<resultMap id="baseResultMap" type="com.cloud.db.pojo.PropertiesPOJO">
-		<id column="id" property="id"/>
-		<result column="akey" property="akey" jdbcType="VARCHAR"/>
-		<result column="avalue" property="avalue" jdbcType="VARCHAR"/>
-		<result column="application" property="application" jdbcType="VARCHAR"/>
-		<result column="aprofile" property="aprofile" jdbcType="VARCHAR"/>
-		<result column="label" property="label" jdbcType="VARCHAR"/>
+<mapper namespace="com.cloud.db.dao.SampleUserDao">
+	<resultMap id="baseResultMap" type="com.cloud.db.pojo.SampleUserPOJO">
+		<id column="user_acct" property="userAcct"/>
+		<result column="user_pwd" property="userPwd" jdbcType="VARCHAR"/>
+		<result column="user_nm" property="userNm" jdbcType="VARCHAR"/>
+		<result column="user_state" property="userState" jdbcType="VARCHAR"/>
+		<result column="role_ids" property="roleIds" jdbcType="VARCHAR"/>
+		<result column="organ_ids" property="organIds" jdbcType="VARCHAR"/>
+		<result column="pwd_chg_flg" property="pwdChgFlg" jdbcType="VARCHAR"/>
+		<result column="last_login_tm" property="lastLoginTm" jdbcType="VARCHAR"/>
+		<result column="pwd_err_cnt" property="pwdErrCnt" jdbcType="INTEGER"/>
+		<result column="pwd_edt_tm" property="pwdEdtTm" jdbcType="VARCHAR"/>
+		<result column="stop_tm" property="stopTm" jdbcType="VARCHAR"/>
+		<result column="lock_tm" property="lockTm" jdbcType="VARCHAR"/>
+		<result column="user_email" property="userEmail" jdbcType="VARCHAR"/>
+		<result column="create_user_acct" property="createUserAcct" jdbcType="VARCHAR"/>
+		<result column="ist_tm" property="istTm" jdbcType="VARCHAR"/>
+		<result column="upd_tm" property="updTm" jdbcType="VARCHAR"/>
+		<result column="session_id" property="sessionId" jdbcType="VARCHAR"/>
 	</resultMap>
 	<sql id="baseColumnList">
-		id,akey,avalue,application,aprofile,lable
+		user_acct,user_pwd,user_nm,user_state,role_ids,organ_ids,pwd_chg_flg,last_login_tm,pwd_err_cnt,pwd_edt_tm,stop_tm,lock_tm,user_email,create_user_acct,ist_tm,upd_tm,session_id
 	</sql>
-	<insert id="insertRecord" parameterType="com.cloud.db.pojo.PropertiesPOJO">
-		insert into properties(id,
-			akey,
-			avalue,
-			application,
-			aprofile,
-			label)
-		values (#{id},
-			#{akey,jdbcType=VARCHAR},
-			#{avalue,jdbcType=VARCHAR},
-			#{application,jdbcType=VARCHAR},
-			#{aprofile,jdbcType=VARCHAR},
-			#{label,jdbcType=VARCHAR})
+	<insert id="insertRecord" parameterType="com.cloud.db.pojo.SampleUserPOJO">
+		insert into sample_user(user_acct,
+			user_pwd,
+			user_nm,
+			user_state,
+			role_ids,
+			organ_ids,
+			pwd_chg_flg,
+			last_login_tm,
+			pwd_err_cnt,
+			pwd_edt_tm,
+			stop_tm,
+			lock_tm,
+			user_email,
+			create_user_acct,
+			ist_tm,
+			upd_tm,
+			session_id)
+		values (#{userAcct,jdbcType=VARCHAR},
+			#{userPwd,jdbcType=VARCHAR},
+			#{userNm,jdbcType=VARCHAR},
+			#{userState,jdbcType=VARCHAR},
+			#{roleIds,jdbcType=VARCHAR},
+			#{organIds,jdbcType=VARCHAR},
+			#{pwdChgFlg,jdbcType=VARCHAR},
+			#{lastLoginTm,jdbcType=VARCHAR},
+			#{pwdErrCnt,jdbcType=INTEGER},
+			#{pwdEdtTm,jdbcType=VARCHAR},
+			#{stopTm,jdbcType=VARCHAR},
+			#{lockTm,jdbcType=VARCHAR},
+			#{userEmail,jdbcType=VARCHAR},
+			#{createUserAcct,jdbcType=VARCHAR},
+			#{istTm,jdbcType=VARCHAR},
+			#{updTm,jdbcType=VARCHAR},
+			#{sessionId,jdbcType=VARCHAR})
  </insert>
+	<delete id="deleteById" >
+		delete from sample_user where user_acct= #{userAcct,jdbcType=VARCHAR}
+
+	</delete>
+	<update id="updateByIdSelective" parameterType="com.cloud.db.pojo.SampleUserPOJO">
+		update sample_user
+		<set>
+			<if test="userPwd != null" >
+				user_pwd=#{userPwd,jdbcType=VARCHAR},
+			</if>
+			<if test="userNm != null" >
+				user_nm=#{userNm,jdbcType=VARCHAR},
+			</if>
+			<if test="userState != null" >
+				user_state=#{userState,jdbcType=VARCHAR},
+			</if>
+			<if test="roleIds != null" >
+				role_ids=#{roleIds,jdbcType=VARCHAR},
+			</if>
+			<if test="organIds != null" >
+				organ_ids=#{organIds,jdbcType=VARCHAR},
+			</if>
+			<if test="pwdChgFlg != null" >
+				pwd_chg_flg=#{pwdChgFlg,jdbcType=VARCHAR},
+			</if>
+			<if test="lastLoginTm != null" >
+				last_login_tm=#{lastLoginTm,jdbcType=VARCHAR},
+			</if>
+			<if test="pwdErrCnt != null" >
+				pwd_err_cnt=#{pwdErrCnt,jdbcType=INTEGER},
+			</if>
+			<if test="pwdEdtTm != null" >
+				pwd_edt_tm=#{pwdEdtTm,jdbcType=VARCHAR},
+			</if>
+			<if test="stopTm != null" >
+				stop_tm=#{stopTm,jdbcType=VARCHAR},
+			</if>
+			<if test="lockTm != null" >
+				lock_tm=#{lockTm,jdbcType=VARCHAR},
+			</if>
+			<if test="userEmail != null" >
+				user_email=#{userEmail,jdbcType=VARCHAR},
+			</if>
+			<if test="createUserAcct != null" >
+				create_user_acct=#{createUserAcct,jdbcType=VARCHAR},
+			</if>
+			<if test="istTm != null" >
+				ist_tm=#{istTm,jdbcType=VARCHAR},
+			</if>
+			<if test="updTm != null" >
+				upd_tm=#{updTm,jdbcType=VARCHAR},
+			</if>
+			<if test="sessionId != null" >
+				session_id=#{sessionId,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where user_acct= #{userAcct,jdbcType=VARCHAR} and user_pwd= #{userPwd,jdbcType=VARCHAR}
+
+	</update>
+	<update id="updateById" parameterType="com.cloud.db.pojo.SampleUserPOJO">
+		update sample_user set
+			user_pwd=#{userPwd,jdbcType=VARCHAR},
+			user_nm=#{userNm,jdbcType=VARCHAR},
+			user_state=#{userState,jdbcType=VARCHAR},
+			role_ids=#{roleIds,jdbcType=VARCHAR},
+			organ_ids=#{organIds,jdbcType=VARCHAR},
+			pwd_chg_flg=#{pwdChgFlg,jdbcType=VARCHAR},
+			last_login_tm=#{lastLoginTm,jdbcType=VARCHAR},
+			pwd_err_cnt=#{pwdErrCnt,jdbcType=INTEGER},
+			pwd_edt_tm=#{pwdEdtTm,jdbcType=VARCHAR},
+			stop_tm=#{stopTm,jdbcType=VARCHAR},
+			lock_tm=#{lockTm,jdbcType=VARCHAR},
+			user_email=#{userEmail,jdbcType=VARCHAR},
+			create_user_acct=#{createUserAcct,jdbcType=VARCHAR},
+			ist_tm=#{istTm,jdbcType=VARCHAR},
+			upd_tm=#{updTm,jdbcType=VARCHAR},
+			session_id=#{sessionId,jdbcType=VARCHAR}
+		where user_acct= #{userAcct,jdbcType=VARCHAR} and user_pwd= #{userPwd,jdbcType=VARCHAR}
+	</update>
 	<select id="selectById" resultMap="baseResultMap">
 		select
 		<include refid="baseColumnList"/>
-		from properties
-		where id= #{id}
+		from sample_user
+		where user_acct= #{userAcct,jdbcType=VARCHAR}
+
+	</select>
+	<select id="selectAll" parameterType="com.cloud.db.pojo.SampleUserPOJO" resultMap="baseResultMap">
+		select <include refid="baseColumnList"/> from sample_user where 1=1
+		<if test="userAcct != null and userAcct != ''" >
+			and user_acct=#{userAcct,jdbcType=VARCHAR}
+		</if>
+		<if test="userPwd != null and userPwd != ''" >
+			and user_pwd=#{userPwd,jdbcType=VARCHAR}
+		</if>
+		<if test="userNm != null and userNm != ''" >
+			and user_nm=#{userNm,jdbcType=VARCHAR}
+		</if>
+		<if test="userState != null and userState != ''" >
+			and user_state=#{userState,jdbcType=VARCHAR}
+		</if>
+		<if test="roleIds != null and roleIds != ''" >
+			and role_ids=#{roleIds,jdbcType=VARCHAR}
+		</if>
+		<if test="organIds != null and organIds != ''" >
+			and organ_ids=#{organIds,jdbcType=VARCHAR}
+		</if>
+		<if test="pwdChgFlg != null and pwdChgFlg != ''" >
+			and pwd_chg_flg=#{pwdChgFlg,jdbcType=VARCHAR}
+		</if>
+		<if test="lastLoginTm != null and lastLoginTm != ''" >
+			and last_login_tm=#{lastLoginTm,jdbcType=VARCHAR}
+		</if>
+		<if test="pwdErrCnt != null and pwdErrCnt != ''" >
+			and pwd_err_cnt=#{pwdErrCnt,jdbcType=INTEGER}
+		</if>
+		<if test="pwdEdtTm != null and pwdEdtTm != ''" >
+			and pwd_edt_tm=#{pwdEdtTm,jdbcType=VARCHAR}
+		</if>
+		<if test="stopTm != null and stopTm != ''" >
+			and stop_tm=#{stopTm,jdbcType=VARCHAR}
+		</if>
+		<if test="lockTm != null and lockTm != ''" >
+			and lock_tm=#{lockTm,jdbcType=VARCHAR}
+		</if>
+		<if test="userEmail != null and userEmail != ''" >
+			and user_email=#{userEmail,jdbcType=VARCHAR}
+		</if>
+		<if test="createUserAcct != null and createUserAcct != ''" >
+			and create_user_acct=#{createUserAcct,jdbcType=VARCHAR}
+		</if>
+		<if test="istTm != null and istTm != ''" >
+			and ist_tm=#{istTm,jdbcType=VARCHAR}
+		</if>
+		<if test="updTm != null and updTm != ''" >
+			and upd_tm=#{updTm,jdbcType=VARCHAR}
+		</if>
+		<if test="sessionId != null and sessionId != ''" >
+			and session_id=#{sessionId,jdbcType=VARCHAR}
+		</if>
+	</select>
+	<select id="selectByMap" parameterType="Map" resultMap="baseResultMap">
+		select <include refid="baseColumnList"/> from sample_user where 1=1
+		<if test="userAcct != null and userAcct != ''" >
+			and user_acct=#{userAcct,jdbcType=VARCHAR}
+		</if>
+		<if test="userPwd != null and userPwd != ''" >
+			and user_pwd=#{userPwd,jdbcType=VARCHAR}
+		</if>
+		<if test="userNm != null and userNm != ''" >
+			and user_nm=#{userNm,jdbcType=VARCHAR}
+		</if>
+		<if test="userState != null and userState != ''" >
+			and user_state=#{userState,jdbcType=VARCHAR}
+		</if>
+		<if test="roleIds != null and roleIds != ''" >
+			and role_ids=#{roleIds,jdbcType=VARCHAR}
+		</if>
+		<if test="organIds != null and organIds != ''" >
+			and organ_ids=#{organIds,jdbcType=VARCHAR}
+		</if>
+		<if test="pwdChgFlg != null and pwdChgFlg != ''" >
+			and pwd_chg_flg=#{pwdChgFlg,jdbcType=VARCHAR}
+		</if>
+		<if test="lastLoginTm != null and lastLoginTm != ''" >
+			and last_login_tm=#{lastLoginTm,jdbcType=VARCHAR}
+		</if>
+		<if test="pwdErrCnt != null and pwdErrCnt != ''" >
+			and pwd_err_cnt=#{pwdErrCnt,jdbcType=INTEGER}
+		</if>
+		<if test="pwdEdtTm != null and pwdEdtTm != ''" >
+			and pwd_edt_tm=#{pwdEdtTm,jdbcType=VARCHAR}
+		</if>
+		<if test="stopTm != null and stopTm != ''" >
+			and stop_tm=#{stopTm,jdbcType=VARCHAR}
+		</if>
+		<if test="lockTm != null and lockTm != ''" >
+			and lock_tm=#{lockTm,jdbcType=VARCHAR}
+		</if>
+		<if test="userEmail != null and userEmail != ''" >
+			and user_email=#{userEmail,jdbcType=VARCHAR}
+		</if>
+		<if test="createUserAcct != null and createUserAcct != ''" >
+			and create_user_acct=#{createUserAcct,jdbcType=VARCHAR}
+		</if>
+		<if test="istTm != null and istTm != ''" >
+			and ist_tm=#{istTm,jdbcType=VARCHAR}
+		</if>
+		<if test="updTm != null and updTm != ''" >
+			and upd_tm=#{updTm,jdbcType=VARCHAR}
+		</if>
+		<if test="sessionId != null and sessionId != ''" >
+			and session_id=#{sessionId,jdbcType=VARCHAR}
+		</if>
 	</select>
 </mapper>
