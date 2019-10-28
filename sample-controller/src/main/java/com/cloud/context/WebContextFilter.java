@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 /**
  * @Title:  WebContextFilter.java
@@ -31,14 +32,15 @@ import org.slf4j.LoggerFactory;
  * @author  lizhi 
  * @date  2019年6月5日 下午3:09:00
  */
-@WebFilter
+@Component
+@WebFilter(urlPatterns = "/*")
 public class WebContextFilter implements Filter{
 
 	private static Logger logger = LoggerFactory.getLogger(WebContextFilter.class); // 日志记录
 	
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-
+		
 	}
 	
 	@Override

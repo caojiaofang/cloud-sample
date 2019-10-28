@@ -4,8 +4,9 @@ $(function() {
 	});
 });
 
-$('.sidebar-list-item a').click(function(){//点击的时候给当前这个加上，其他的移除
-	$(this).addClass("active").siblings("a").removeClass("active");
+$('.sidebar-list-active a').click(function(){//点击的时候给当前这个加上，其他的移除
+	$(".sidebar-list-active a").removeClass("active");
+	$(this).addClass("active");
 });
 	
 function changeMenu(url,name) {
