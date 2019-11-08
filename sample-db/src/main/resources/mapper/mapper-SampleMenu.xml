@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.db.dao.SampleMenuDao">
+	<resultMap id="baseResultMap" type="com.cloud.db.pojo.SampleMenuPOJO">
+		<id column="menu_id" property="menuId"/>
+		<result column="menu_nm" property="menuNm" jdbcType="VARCHAR"/>
+		<result column="menu_url" property="menuUrl" jdbcType="VARCHAR"/>
+		<result column="menu_odr" property="menuOdr" jdbcType="VARCHAR"/>
+		<result column="parent_menu_id" property="parentMenuId" jdbcType="VARCHAR"/>
+		<result column="create_user_acct" property="createUserAcct" jdbcType="VARCHAR"/>
+		<result column="ist_tm" property="istTm" jdbcType="VARCHAR"/>
+		<result column="upd_tm" property="updTm" jdbcType="VARCHAR"/>
+	</resultMap>
+	<sql id="baseColumnList">
+		menu_id,menu_nm,menu_url,menu_odr,parent_menu_id,create_user_acct,ist_tm,upd_tm
+	</sql>
+	<insert id="insertRecord" parameterType="com.cloud.db.pojo.SampleMenuPOJO">
+		insert into sample_menu(menu_id,
+			menu_nm,
+			menu_url,
+			menu_odr,
+			parent_menu_id,
+			create_user_acct,
+			ist_tm,
+			upd_tm)
+		values (#{menuId,jdbcType=VARCHAR},
+			#{menuNm,jdbcType=VARCHAR},
+			#{menuUrl,jdbcType=VARCHAR},
+			#{menuOdr,jdbcType=VARCHAR},
+			#{parentMenuId,jdbcType=VARCHAR},
+			#{createUserAcct,jdbcType=VARCHAR},
+			#{istTm,jdbcType=VARCHAR},
+			#{updTm,jdbcType=VARCHAR})
+ </insert>
+	<delete id="deleteById" >
+		delete from sample_menu where menu_id= #{menuId,jdbcType=VARCHAR}
+
+	</delete>
+	<update id="updateByIdSelective" parameterType="com.cloud.db.pojo.SampleMenuPOJO">
+		update sample_menu
+		<set>
+			<if test="menuNm != null" >
+				menu_nm=#{menuNm,jdbcType=VARCHAR},
+			</if>
+			<if test="menuUrl != null" >
+				menu_url=#{menuUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="menuOdr != null" >
+				menu_odr=#{menuOdr,jdbcType=VARCHAR},
+			</if>
+			<if test="parentMenuId != null" >
+				parent_menu_id=#{parentMenuId,jdbcType=VARCHAR},
+			</if>
+			<if test="createUserAcct != null" >
+				create_user_acct=#{createUserAcct,jdbcType=VARCHAR},
+			</if>
+			<if test="istTm != null" >
+				ist_tm=#{istTm,jdbcType=VARCHAR},
+			</if>
+			<if test="updTm != null" >
+				upd_tm=#{updTm,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where menu_id= #{menuId,jdbcType=VARCHAR}
+
+	</update>
+	<update id="updateById" parameterType="com.cloud.db.pojo.SampleMenuPOJO">
+		update sample_menu set
+			menu_nm=#{menuNm,jdbcType=VARCHAR},
+			menu_url=#{menuUrl,jdbcType=VARCHAR},
+			menu_odr=#{menuOdr,jdbcType=VARCHAR},
+			parent_menu_id=#{parentMenuId,jdbcType=VARCHAR},
+			create_user_acct=#{createUserAcct,jdbcType=VARCHAR},
+			ist_tm=#{istTm,jdbcType=VARCHAR},
+			upd_tm=#{updTm,jdbcType=VARCHAR}
+		where menu_id= #{menuId,jdbcType=VARCHAR}
+	</update>
+	<select id="selectById" resultMap="baseResultMap">
+		select
+		<include refid="baseColumnList"/>
+		from sample_menu
+		where menu_id= #{menuId,jdbcType=VARCHAR}
+
+	</select>
+	<select id="selectAll" parameterType="com.cloud.db.pojo.SampleMenuPOJO" resultMap="baseResultMap">
+		select <include refid="baseColumnList"/> from sample_menu where 1=1
+		<if test="menuId != null and menuId != ''" >
+			and menu_id=#{menuId,jdbcType=VARCHAR}
+		</if>
+		<if test="menuNm != null and menuNm != ''" >
+			and menu_nm=#{menuNm,jdbcType=VARCHAR}
+		</if>
+		<if test="menuUrl != null and menuUrl != ''" >
+			and menu_url=#{menuUrl,jdbcType=VARCHAR}
+		</if>
+		<if test="menuOdr != null and menuOdr != ''" >
+			and menu_odr=#{menuOdr,jdbcType=VARCHAR}
+		</if>
+		<if test="parentMenuId != null and parentMenuId != ''" >
+			and parent_menu_id=#{parentMenuId,jdbcType=VARCHAR}
+		</if>
+		<if test="createUserAcct != null and createUserAcct != ''" >
+			and create_user_acct=#{createUserAcct,jdbcType=VARCHAR}
+		</if>
+		<if test="istTm != null and istTm != ''" >
+			and ist_tm=#{istTm,jdbcType=VARCHAR}
+		</if>
+		<if test="updTm != null and updTm != ''" >
+			and upd_tm=#{updTm,jdbcType=VARCHAR}
+		</if>
+	</select>
+	<select id="selectByMap" parameterType="Map" resultMap="baseResultMap">
+		select <include refid="baseColumnList"/> from sample_menu where 1=1
+		<if test="menuId != null and menuId != ''" >
+			and menu_id=#{menuId,jdbcType=VARCHAR}
+		</if>
+		<if test="menuNm != null and menuNm != ''" >
+			and menu_nm=#{menuNm,jdbcType=VARCHAR}
+		</if>
+		<if test="menuUrl != null and menuUrl != ''" >
+			and menu_url=#{menuUrl,jdbcType=VARCHAR}
+		</if>
+		<if test="menuOdr != null and menuOdr != ''" >
+			and menu_odr=#{menuOdr,jdbcType=VARCHAR}
+		</if>
+		<if test="parentMenuId != null and parentMenuId != ''" >
+			and parent_menu_id=#{parentMenuId,jdbcType=VARCHAR}
+		</if>
+		<if test="createUserAcct != null and createUserAcct != ''" >
+			and create_user_acct=#{createUserAcct,jdbcType=VARCHAR}
+		</if>
+		<if test="istTm != null and istTm != ''" >
+			and ist_tm=#{istTm,jdbcType=VARCHAR}
+		</if>
+		<if test="updTm != null and updTm != ''" >
+			and upd_tm=#{updTm,jdbcType=VARCHAR}
+		</if>
+	</select>
+</mapper>
